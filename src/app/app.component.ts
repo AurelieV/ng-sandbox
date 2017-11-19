@@ -11,9 +11,10 @@ export class AppComponent {
     { title: 'Widget1', position: 1 },
     { title: 'Widget2', position: 2 }
   ]
-
-  @ViewChild("dashboard1", { read: DashboardComponent })
-  dashboard1: DashboardComponent;
+  widgets2 = [
+    { type: 'widget1', position: 1, config: 'red' },
+    { type: 'widget2', position: 2, config: '10px' }
+  ];
   
   addWidget() {
     const position = this.widgets.length + 1;
@@ -36,6 +37,26 @@ export class AppComponent {
         }
       })
     }
+  }
+
+  addWidget1(color: string) {
+    this.widgets2 = this.widgets2.concat({
+      type: 'widget1',
+      config: color,
+      position: this.widgets2.length + 1
+    });
+  }
+
+  addWidget2(size: string) {
+    this.widgets2 = this.widgets2.concat({
+      type: 'widget2',
+      config: size,
+      position: this.widgets2.length + 1
+    });
+  }
+
+  updateConfig(i: number, config: string) {
+    this.widgets2[i] = { ...this.widgets2[i], config }
   }
 
 }

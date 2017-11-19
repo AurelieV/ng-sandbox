@@ -11,6 +11,7 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 })
 export class DashboardComponent implements AfterViewInit {
     @Input() title: string;
+    @Input() displayActions: boolean = true;
     
     @ContentChildren(DashboardWidgetDirective)
     widgets: QueryList<DashboardWidgetDirective>

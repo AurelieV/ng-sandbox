@@ -1,8 +1,8 @@
 <h1>Sandbox test</h1>
 
-<h4>Dashboard exemple</h4>
-<button (click)="addWidget()"> Add a widget </button>
-<dashboard title="Dashboard 1" #dashboard1>
+<h4>Dashboard with moving</h4>
+<button (click)="addWidget()"> Add a widget to dashboard 1</button>
+<dashboard title="Dashboard 1">
   <ng-container *ngFor="let widget of widgets; let i = index;">
       <ng-template 
         dashboard-widget
@@ -11,6 +11,57 @@
         (onMoveLeftClick)="move(i, -1)"
       >
           <div class="custom">{{widget.title}}</div>
+      </ng-template>
+  </ng-container>
+</dashboard>
+
+<h4>Dashboard with widget-loader example</h4>
+<p>
+  Add a Widget 1 with color
+  <select #color>
+    <option value="red">red</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+  </select>
+  <button (click)="addWidget1(color.value)">Submit</button>
+</p>
+<p>
+    Add a Widget 2 with color
+    <select #size>
+      <option value="10px">10px</option>
+      <option value="14px">14px</option>
+      <option value="18px">18px</option>
+    </select>
+    <button (click)="addWidget2(size.value)">Submit</button>
+</p>
+
+Update Configuration
+<div *ngFor="let widget of widgets2; let i = index;">
+  Widget {{widget.position}}
+  <ng-container *ngIf="widget.type === 'widget1'">
+      <select #config [value]="widget.config">
+          <option value="red">red</option>
+          <option value="blue">blue</option>
+          <option value="green">green</option>
+      </select>
+      <button (click)="updateConfig(i, config.value)">Change</button>
+  </ng-container>
+  <ng-container *ngIf="widget.type === 'widget2'">
+      <select #config [value]="widget.config">
+          <option value="10px">10px</option>
+          <option value="14px">14px</option>
+          <option value="18px">18px</option>
+      </select>
+      <button (click)="updateConfig(i, config.value)">Change</button>
+  </ng-container>
+</div>
+
+<dashboard title="Dashboard 2" [displayActions]="false">
+  <ng-container *ngFor="let widget of widgets2; let i = index;">
+      <ng-template 
+        dashboard-widget
+        [position]="widget.position">
+        <ng-container widget-loader [type]="widget.type" [config]="widget.config"></ng-container>
       </ng-template>
   </ng-container>
 </dashboard>
