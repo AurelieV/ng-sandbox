@@ -1,0 +1,12 @@
+<p>{{title}}</p>
+<div class="widgets">
+    <div *ngFor="let widget of orderedWidgets" class="widget">
+        <div>{{widget.position}}</div>
+        <ng-container *ngTemplateOutlet="widget.templateRef"></ng-container>
+        <div class="actions">
+            <button (click)="widget.onMoveLeftClick.emit({})">Move left</button>
+            <button (click)="widget.onMoveRightClick.emit({})">Move right</button>
+        </div>
+    </div>
+</div>
+

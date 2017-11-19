@@ -1,0 +1,18 @@
+.widgets {
+    display: flex;
+    flex-wrap: wrap;
+}
+.widget {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    .actions {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+}
