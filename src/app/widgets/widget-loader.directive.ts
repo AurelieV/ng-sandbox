@@ -1,6 +1,6 @@
 import { Input, ComponentRef, OnChanges, SimpleChanges, Directive, ComponentFactoryResolver, ViewContainerRef } from "@angular/core";
 
-import CONFIGURATION from './widget-configuration';
+import {CONFIGURATION} from './widget-configuration';
 
 @Directive({
     selector: '[widget-loader]'

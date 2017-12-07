@@ -5,7 +5,7 @@ import { SimpleChanges, OnChanges, Component, Input, ViewChild, Renderer2, Eleme
     selector: 'widget1',
     template: `<div>Widget 1 with <span #text>{{config}} color</span></div>`
 })
-export default class Widget1Component implements OnChanges {
+export class Widget1Component implements OnChanges {
     @Input() config;
     @ViewChild("text", { read: ElementRef }) text: ElementRef;
 
